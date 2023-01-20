@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
@@ -59,9 +58,12 @@ class _TransactionItemState extends State<TransactionItem> {
         ),
         //show more information when device has big screen
         trailing: MediaQuery.of(context).size.width > 460
-            ? FlatButton.icon(
+            ? TextButton.icon(
                 label: Text('Delete'),
-                textColor: Theme.of(context).errorColor,
+                // textColor: Theme.of(context).errorColor,
+                style: TextButton.styleFrom(
+                  foregroundColor: Theme.of(context).errorColor,
+                ),
                 icon: Icon(Icons.delete),
                 onPressed: () => widget.deleteTx(widget.transaction.id),
               )

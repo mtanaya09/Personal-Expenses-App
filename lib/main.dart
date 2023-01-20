@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Second App',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          accentColor: Colors.orange,
-          // errorColor: Colors.red,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline6: TextStyle(
@@ -36,13 +33,18 @@ class MyApp extends StatelessWidget {
                 button: TextStyle(color: Colors.white),
               ),
           appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
+            toolbarTextStyle: ThemeData.light().textTheme.copyWith(
                   headline6: TextStyle(
                       fontFamily: 'OpenSans',
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
-                ),
-          )),
+                ).bodyText2, titleTextStyle: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ).headline6,
+          ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(secondary: Colors.orange)),
       home: MyHomePage(),
     );
   }
@@ -150,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             style: Theme.of(context).textTheme.headline6,
           ),
           Switch.adaptive(
-            activeColor: Theme.of(context).accentColor,
+            activeColor: Theme.of(context).colorScheme.secondary,
             value: _showChart,
             onChanged: (value) {
               setState(() {
